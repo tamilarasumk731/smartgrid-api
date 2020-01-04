@@ -2,11 +2,15 @@ class OrdersController < ApplicationController
   include MapHelper
 
   def order_picked_up 
-    order = Order.find(pickup_params["id"])
-    if order.update(status: 1)
-      render json: {status: true, message: "Order Picked Up"}, status: :ok and return
-    else
-      render json: {status: false, message: order}, status: :ok and return
+    begin
+      ActiveRecord::Base.transaction do
+        order = Order.find(pickup_params["id"])
+        order.update(status: 1)
+        order.ryder.update(available: false)
+        render json: {status: true, message: "Order Picked Up"}, status: :ok and return
+      end
+    rescue => e
+      render json: {status: false, message: e.error.messages}, status: :ok and return
     end
   end
 
@@ -50,5 +54,5 @@ class OrdersController < ApplicationController
   def show_params
     params.require(:order).permit(:order_id)
   end
-
+  
 end
