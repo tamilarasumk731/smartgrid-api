@@ -43,3 +43,6 @@ gem 'rails_admin', '~> 2.0'
 gem 'sprockets', '~>3.0'
 gem 'dotenv-rails'
 gem 'pry'
+gem 'rest-client'
+
+# res = RestClient.get("https://apis.mapmyindia.com/advancedmaps/v1/b797c955mw9jehz4rnysrnwkdgd1eeno/route_traffic/driving/77.131123,28.552413;77.113091,28.544649?")
