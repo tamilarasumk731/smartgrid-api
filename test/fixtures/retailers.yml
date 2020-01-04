@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  retailer_lat: 1.5
+  retailer: MyString
+
+two:
+  name: MyString
+  retailer_lat: 1.5
+  retailer: MyString
