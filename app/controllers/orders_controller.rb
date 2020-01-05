@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
       render json: {status: false, message: "Order not created, Please Try Again"}, status: :ok and return
     else
       order = response[:order_details]
-      order_details = ({status: order.status, retailer: order.retailer.name, user: order.user.name, route_info: order.route_info, eta: order.eta, ryder: order.ryder.name})
+
+      order_details = ({status: order.status, retailer: order.retailer.name, user: order.user.name, route_info: order.route_info, eta: order.eta, ryder: order.ryder.name, created_at: order.created_at})
       render json: {status: true, message: "Order Placed", order_details: order_details}, status: :ok and return
     end
   end
