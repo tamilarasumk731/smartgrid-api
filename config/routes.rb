@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     collection do
       put '/pickedup', to: "orders#order_picked_up"
       post '/create', to: "orders#create"
-      post '/show', to: "orders#show"
+      get '/show', to: "orders#show"
     end
   end
 
