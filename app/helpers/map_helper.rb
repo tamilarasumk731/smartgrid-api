@@ -51,7 +51,7 @@ module MapHelper
 
 	def load_big_data
 		test_data = []
-		CSV.foreach("/Users/inbasasis/Documents/MyBranch/dbscan/examples/geodata.csv", headers: true) do |row|
+		CSV.foreach("geodata.csv", headers: true) do |row|
 			test_data << [row[0].to_f, row[1].to_f]
 		end
 		dbscan = DBSCAN( test_data, :epsilon => 0.1, :min_points => 1, :distance => :haversine_distance2 )
