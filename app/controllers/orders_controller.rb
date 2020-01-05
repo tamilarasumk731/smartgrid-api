@@ -15,12 +15,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    origin = [28.610981,77.227434]
-    destination = [28.616679,77.212021]
-    # retailer_id = assign_retailers
-    retailer_id = 1
-    # ryder_id = assign_ryders
-    ryder_id = 1
+    # origin = [28.610981,77.227434]
+    # destination = [28.616679,77.212021]
+    retailer_id = assign_retailers params
+    user = User.find(params[:order][:user_id])
+    origin = [user.lat, user.lng]
+    retailer = Retailer.find(retailer_id)
+    destination = [retailer.retailer_lat, retailer.retailer_lng]
+    ryder_id = assign_ryders
     response = get_and_set_route_details_and_eta origin, destination, create_params, {retailer_id: retailer_id, ryder_id: ryder_id}
 
     if response[:status] == false

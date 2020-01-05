@@ -45,6 +45,6 @@ gem 'dotenv-rails'
 gem 'pry'
 gem 'rest-client'
 gem 'rack-cors', '~> 0.3.1'
-
+gem 'dbscan', '~> 0.2'
 
 # res = RestClient.get("https://apis.mapmyindia.com/advancedmaps/v1/b797c955mw9jehz4rnysrnwkdgd1eeno/route_traffic/driving/77.131123,28.552413;77.113091,28.544649?")
