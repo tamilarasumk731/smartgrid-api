@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    order = Order.find(show_params[:order_id])
+    order = Order.find(params[:order_id])
     if order
       order_details = ({status: order.status, retailer: order.retailer.name, user: order.user.name, route_info: order.route_info, eta: order.eta, ryder: order.ryder.name})
       render json: {status: true, message: "Order Current Status", order_details: order_details}, status: :ok and return
