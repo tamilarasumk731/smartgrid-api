@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 every 1.day, at: '1:38 am' do
-  binding.pry
+  # binding.pry
   runner "UserDatum.trigger_mail"
 end

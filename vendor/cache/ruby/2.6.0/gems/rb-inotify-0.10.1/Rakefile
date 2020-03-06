@@ -10,5 +10,5 @@ task :console do
   require 'rb-inotify'
   require 'pry'
   
-  binding.pry
+  # binding.pry
 end

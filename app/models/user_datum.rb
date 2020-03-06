@@ -2,7 +2,7 @@ class UserDatum < ApplicationRecord
 	belongs_to :user_link
 
 	def trigger_mail
-		binding.pry
+		# binding.pry
 		puts "dsds"
 	end
 end
