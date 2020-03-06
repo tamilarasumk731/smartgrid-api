@@ -60,7 +60,6 @@ class UserLinksController < ApplicationController
       custom_data[:site_duration][:site] << data['current_url']
       custom_data[:site_duration][:duration] << data['duration']
     end
-    binding.pry
     render json: {success: true, message: "Data retrieval successful", custom_data: custom_data} and return
   end
 
