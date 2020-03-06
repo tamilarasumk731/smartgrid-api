@@ -1,0 +1,15 @@
+current directory: /Users/inbasasis/Documents/MyBranch/smartgrid-api/vendor/cache/ruby/2.6.0/gems/distance_measures-0.0.6/ext/euclidean_distance
+/Users/inbasasis/.rvm/rubies/ruby-2.6.3/bin/ruby -I /Users/inbasasis/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200105-12279-1k6es25.rb extconf.rb
+creating Makefile
+
+current directory: /Users/inbasasis/Documents/MyBranch/smartgrid-api/vendor/cache/ruby/2.6.0/gems/distance_measures-0.0.6/ext/euclidean_distance
+make "DESTDIR=" clean
+
+current directory: /Users/inbasasis/Documents/MyBranch/smartgrid-api/vendor/cache/ruby/2.6.0/gems/distance_measures-0.0.6/ext/euclidean_distance
+make "DESTDIR="
+compiling euclidean_distance.c
+linking shared-object distance_measures/euclidean_distance.bundle
+
+current directory: /Users/inbasasis/Documents/MyBranch/smartgrid-api/vendor/cache/ruby/2.6.0/gems/distance_measures-0.0.6/ext/euclidean_distance
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 euclidean_distance.bundle ./.gem.20200105-12279-191wk31/distance_measures
