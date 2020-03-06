@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_214356) do
     t.string "from_url"
     t.string "lat"
     t.string "lng"
-    t.float "duration"
+    t.float "duration", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "start_date"

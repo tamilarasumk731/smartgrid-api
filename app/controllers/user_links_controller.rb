@@ -32,7 +32,9 @@ class UserLinksController < ApplicationController
   end
 
   def find_duration end_time, start_time
-    Time.parse(end_time) - Time.parse(start_time)
+    if end_time.present? && start_time.present?
+      Time.parse(end_time) - Time.parse(start_time)
+    end
   end
 
   def get_user_data
