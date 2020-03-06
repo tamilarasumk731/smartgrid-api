@@ -51,16 +51,32 @@ class UserLinksController < ApplicationController
 
   def analyse_data
     custom_data = {}
-    custom_data[:site_duration] = {
-                                    :site => [],
-                                    :duration => []
-                                  }
+    custom_data[:site_duration] = []
     data_hash = JSON.parse(UserDatum.where(user_link_id: analyse_params[:user]).to_json)
     data_hash.each do |data|
-      custom_data[:site_duration][:site] << data['current_url']
-      custom_data[:site_duration][:duration] << data['duration']
+      custom_data[:site_duration] << [data['current_url'], data['duration']]
     end
+    custom_data[:favourite] = find_favourite data_hash
+    custom_data[:total_time] = find_total_time data_hash
+    custom_data[:no_sites] = find_no_sites data_hash
+    custom_data[:productivity] = find_productivity data_hash
     render json: {success: true, message: "Data retrieval successful", custom_data: custom_data} and return
+  end
+
+  def find_favourite data_hash
+    data_hash.max_by{|k| k['duration']}['current_url']
+  end
+
+  def find_total_time data_hash
+    data_hash.map { |h| h['duration'] }.sum
+  end
+
+  def find_no_sites data_hash
+    data_hash.count
+  end
+
+  def find_productivity data_hash
+    80
   end
 
   private
@@ -69,7 +85,7 @@ class UserLinksController < ApplicationController
   end
 
   def data_params
-    params.permit(:user_link_id, :site, :current_url, :from_url, :lat, :lng, :duration)
+    params.permit(:user_link_id, :site, :current_url, :from_url, :lat, :lng, :duration, :start_date)
   end
 
   def search_param
