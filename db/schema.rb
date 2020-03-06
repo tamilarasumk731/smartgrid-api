@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_214539) do
+ActiveRecord::Schema.define(version: 2020_03_06_214356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,28 @@ ActiveRecord::Schema.define(version: 2020_01_04_214539) do
     t.float "ryder_lat"
     t.float "ryder_lng"
     t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_data", force: :cascade do |t|
+    t.bigint "user_link_id", null: false
+    t.string "site"
+    t.string "current_url"
+    t.string "from_url"
+    t.string "lat"
+    t.string "lng"
+    t.float "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "start_date"
+    t.string "end_date"
+    t.index ["user_link_id"], name: "index_user_data_on_user_link_id"
+  end
+
+  create_table "user_links", force: :cascade do |t|
+    t.string "user_name"
+    t.string "user_mail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

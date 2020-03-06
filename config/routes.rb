@@ -16,4 +16,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_links, only: [:index] do
+    collection do
+      put '/create', to: "user_links#create"
+      post '/post_updates', to: "user_links#post_user_data"
+      get '/get_updates', to: "user_links#get_user_data"
+      post '/analyse_data', to: "user_links#analyse_data"
+      post '/update', to: "user_links#update_user_data"
+    end
+  end
+
 end

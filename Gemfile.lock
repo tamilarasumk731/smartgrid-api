@@ -64,9 +64,11 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.0.1)
+    chronic (0.10.2)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    daru (0.0.5)
     dbscan (0.2)
       distance_measures
       geocoder
@@ -135,6 +137,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    nyaplot (0.1.6)
     pg (1.2.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -228,6 +231,8 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     zeitwerk (2.2.2)
 
 PLATFORMS
@@ -236,10 +241,12 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  daru (~> 0.0.4)
   dbscan (~> 0.2)
   dotenv-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  nyaplot
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 4.1)
@@ -251,6 +258,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets (~> 3.0)
   tzinfo-data
+  whenever
 
 RUBY VERSION
    ruby 2.6.3p62
