@@ -24,7 +24,7 @@ class UserLinksController < ApplicationController
     data_hash = JSON.parse(user_data.to_json)
     data_hash.each do |data|
       duration = find_duration update_params['end_time'], data['start_date']
-      if data['end_time'].blank? && data['duration'].blank?
+      if data['end_time'].blank? && data['duration'] == 0
         user_data.update(end_date: update_params['end_time'], duration: duration)
       end
     end
