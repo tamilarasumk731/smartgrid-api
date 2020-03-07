@@ -68,6 +68,8 @@ class UserLinksController < ApplicationController
     custom_data[:total_time] = find_total_time data_hash
     custom_data[:no_sites] = find_no_sites data_hash
     custom_data[:productivity] = find_productivity data_hash
+    custom_data[:active_tabs_count] = find_active_tabs data_hash
+    custom_data[:total_tabs] = find_total_tabs data_hash
     render json: {success: true, message: "Data retrieval successful", custom_data: custom_data} and return
   end
 
@@ -79,8 +81,22 @@ class UserLinksController < ApplicationController
     data_hash.map { |h| h['duration'] }.sum
   end
 
-  def find_no_sites data_hash
+  def find_total_tabs data_hash
     data_hash.count
+  end
+
+  def find_active_tabs data_hash
+    count = 0
+    data_hash.each do |data|
+      count = count + 1 if data['end_time'].blank? && data['duration'] == 0
+    end
+    count
+  end
+
+  def find_no_sites data_hash
+    count = 0
+    grouped_data = data_hash.group_by{|d| d['current_url']}
+    grouped_data.count
   end
 
   def find_productivity data_hash
