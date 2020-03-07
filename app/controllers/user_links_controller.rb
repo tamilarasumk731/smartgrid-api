@@ -20,7 +20,7 @@ class UserLinksController < ApplicationController
   end
 
   def update_user_data
-    user_data = UserDatum.where(site: update_params[:site], user_link_id: update_params[:user])
+    user_data = UserDatum.where(current_url: update_params[:site], user_link_id: update_params[:user])
     data_hash = JSON.parse(user_data.to_json)
     data_hash.each do |data|
       duration = find_duration update_params['end_time'], data['start_date']
@@ -55,8 +55,14 @@ class UserLinksController < ApplicationController
     custom_data = {}
     custom_data[:site_duration] = []
     data_hash = JSON.parse(UserDatum.where(user_link_id: analyse_params[:user]).to_json)
-    data_hash.each do |data|
-      custom_data[:site_duration] << [data['current_url'], data['duration']]
+    grouped_data = data_hash.group_by{|d| d['current_url']}
+    grouped_data.each do |key, data|
+      if data.count == 1
+        custom_data[:site_duration] << [key, data[0]['duration']]
+      else
+        duration_sum = find_total_time data
+        custom_data[:site_duration] << [key, duration_sum]
+      end
     end
     custom_data[:favourite] = find_favourite data_hash
     custom_data[:total_time] = find_total_time data_hash
